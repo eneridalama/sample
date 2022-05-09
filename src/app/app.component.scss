@@ -1,0 +1,27 @@
+.container {
+  margin: auto;
+  .buttons {
+    padding: 20px 0 0 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .first {
+    height: auto;
+    max-width: 500px;
+  }
+  .col {
+    padding: 50px 50px;
+    .pad-item {
+      padding: 40px 0;
+    }
+    app-header {
+      text-align: center;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+    }
+  }
+}

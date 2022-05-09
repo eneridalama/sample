@@ -1,0 +1,25 @@
+@import "primeng/resources/themes/lara-dark-blue/theme.css";
+
+.fc-day-today {
+  background: rgb(15, 44, 84) !important;
+  border: none !important;
+}
+
+body .ui-orderlist-controls {
+  display: none;
+}
+
+.p-inputgroup .p-inputtext,
+.p-fluid .p-inputgroup .p-inputtext,
+.p-inputgroup .p-inputwrapper,
+.p-inputgroup .p-inputwrapper > .p-component {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+ul {
+  background-color: rgb(8, 23, 43);
+}
+li {
+  background-color: rgb(9, 26, 49) !important;
+}

@@ -1,0 +1,56 @@
+<button pButton type="button" class="p-button-sm" (click)="showDialog(true)" label="Book Now"></button>
+
+<p-toast position="top-right" key="tl" [style]="{width: '30vw'}"></p-toast>
+<p-dialog [modal]="true" header="Book Appointment" [(visible)]="display" [transitionOptions]="'100ms'"
+    [breakpoints]="{'1160px': '78vw','960px': '90vw', '500px': '91vw'}" [style]="{width: '70vw'}">
+    <form [formGroup]="addNewAppointmentForm" class="grid">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+                <input type="text" pInputText id="inputname" formControlName="firstname">
+                <label for="inputname">First Name</label>
+            </span>
+        </div>
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-float-label">
+                <input type="text" pInputText id="inputlastname" formControlName="lastname">
+                <label for="inputlastname">Last Name</label>
+            </span>
+        </div>
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+            <p-inputMask mask="(999) 999-9999" id="inputnumber" formControlName="number" placeholder="(999) 999-9999">
+            </p-inputMask>
+        </div>
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+            <span class="p-float-label">
+                <p-calendar formControlName="date"></p-calendar>
+                <label for="inputnumber">Pick Date</label>
+            </span>
+        </div>
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+            <span class="p-float-label">
+                <p-calendar [timeOnly]="true" inputId="timeonly" formControlName="hour" [minDate]="minHour"
+                    [maxDate]="maxHour"></p-calendar>
+                <label for="timeonly">Pick Hour</label>
+            </span>
+        </div>
+        <div class="grid-3 p-inputgroup">Services: </div>
+        <div class="grid-4">
+            <ng-container *ngFor="let service of services">
+                <div class="p-field-checkbox">
+                    <p-checkbox name="servicesGroup" value={{service}} [inputId]="service.title"
+                        formControlName="servicesList" (onChange)="checkValue($event, service)"></p-checkbox>
+                    <label [for]="service.title" id="label-checkbox">{{service.title}}</label>
+                </div>
+            </ng-container>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)='addNewAppointment($event)' label="Confirm" class="p-button-text"
+            [disabled]="addNewAppointmentForm.invalid"></p-button>
+    </ng-template>
+</p-dialog>

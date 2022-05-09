@@ -1,0 +1,39 @@
+<button pButton type="button" class="p-button-sm" (click)="showDialog()" label="Services"></button>
+
+<p-dialog [modal]="true" header="Services" [(visible)]="display" [transitionOptions]="'100ms'"
+   [breakpoints]="{'1284px': '71vw','960px': '75vw', '500px': '91vw'}" [style]="{width: '71vw'}">
+    <p-toast position="top-right" key="tl" [style]="{width: '59vw'}"></p-toast>
+    <div class="d-flex justify-content-center">
+        <ul class="list-group grid">
+            <li class="list-group-item grid-item" *ngFor="let service of services">
+                <p-card header={{service.title}} subheader='{{service.time | timeChanger}}' [style]="{width: '230px'}"
+                    styleClass="p-card-shadow">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" src={{service.image}} [style]="{width: '230px', height: '230px' }">
+                    </ng-template>
+                    {{service.price | priceChanger}}
+                    <ng-template pTemplate="footer">
+                        <div class="d-flex justify-content-between flex-right">
+                            <p-button icon="pi pi-pencil"
+                                styleClass="p-button-rounded p-button-warning p-button-outlined"
+                                (click)="editService(service)">
+                            </p-button>
+                            <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined"
+                                [style]="{'margin-left': '.5em'}" (click)="confirm(service)"></p-button>
+                        </div>
+                    </ng-template>
+                </p-card>
+            </li>
+        </ul>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-plus" (click)="showModal(true)" label="Add Service"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="{{openEdit?'Edit Service':'Add Service'}}" [(visible)]="openModal" *ngIf="openModal" [modal]="true"  [transitionOptions]="'100ms'"
+[breakpoints]="{'960px': '75vw', '500px': '91vw'}" [style]="{width: '61vw'}">
+    <app-add-service (addedService)="addService($event)" (openModal)="showModal($event)" [object]="selectedService">
+    </app-add-service>
+</p-dialog>
+<p-confirmDialog header="Confirmation" width="425" ></p-confirmDialog>

@@ -1,0 +1,24 @@
+.container {
+  padding: 30px 20px 0 20px;
+  h1 {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin: auto;
+    font-family: "Montserrat Subrayada", sans-serif;
+  }
+}
+
+.theme-switch {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    display: block;
+    .row {
+      display: block;
+    }
+  }
+}

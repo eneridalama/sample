@@ -1,0 +1,45 @@
+<full-calendar [deepChangeDetection]="true" [options]="calendarOptions"></full-calendar>
+
+<p-toast position="top-right" key="tl" [style]="{width: '59vw'}"></p-toast>
+<p-dialog header="How do you wish to procceed with this event?" [(visible)]="display" [modal]="true"
+    [breakpoints]="{'960px': '75vw', '500px': '91vw'}" [style]="{width: '40vw'}">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p-divider>
+                    <i class="pi pi-user"></i>
+                </p-divider>
+                <div class="d-flex title">
+                    <p-inplace editor="true" [closable]="true" class="p-inplace" [active]="true">
+                        <ng-template pTemplate="display">
+                            <span class="display">{{title}} </span>
+                        </ng-template>
+                        <ng-template pTemplate="content">
+                            <input type="text" class="content" pInputText [ngModel]="title"
+                                (ngModelChange)="changedTitle = $event">
+                        </ng-template>
+                    </p-inplace>
+                    <p-button icon="pi pi-check" class="button" styleClass="p-button-success"
+                        (click)="editEventTitle(id, changedTitle)">
+                    </p-button>
+                </div>
+                <div class="d-flex phone">
+                    <i class="pi pi-phone"></i> <span id="description">{{description}}</span>
+                </div>
+                <p-divider>
+                    <i class="pi pi-clock"></i>
+                </p-divider>
+                <div class="phone">
+                    <p>Time of appointment: <br> {{startTime}} </p>
+                    <p>Starts at: <br> {{start}}</p>
+                    <p>Ends at: <br> {{end}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-trash" label="Delete" styleClass="p-button-danger" (click)="confirm(title)">
+        </p-button>
+    </ng-template>
+</p-dialog>
+<p-confirmDialog header="Confirmation" width="425"></p-confirmDialog>

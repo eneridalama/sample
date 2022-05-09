@@ -1,0 +1,31 @@
+<form [formGroup]="serviceForm">
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-tag"></i></span>
+        <span class="p-float-label">
+            <input type="text" pInputText name="inputtitle" formControlName="title">
+            <label for="inputtitle">Title</label>
+        </span>
+    </div>
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+        <span class="p-float-label">
+            <p-inputNumber suffix=" mins" name="inputtime" formControlName="time"> </p-inputNumber>
+            <label for="inputtime">Time</label>
+        </span>
+    </div>
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+        <span class="p-float-label">
+            <p-inputNumber suffix=" Lek" name="inputprice" formControlName="price"> </p-inputNumber>
+            <label for="inputprice">Price</label>
+        </span>
+    </div>
+    <input type="text" formControlName="image" hidden>
+    <p-fileUpload name="myfile[]" accept="image/*" id="inputtimage">
+    </p-fileUpload>
+</form>
+<div class="d-flex justify-content-between">
+    <p-button icon="pi pi-times" label="Cancel" (onClick)="close()"></p-button>
+    <p-button icon="pi pi-check" type="button" (onClick)="addNewService()" label="Confirm" styleClass="p-button-success"
+        [disabled]="serviceForm.invalid"></p-button>
+</div>
