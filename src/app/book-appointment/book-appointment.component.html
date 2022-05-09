@@ -1,6 +1,6 @@
 <button pButton type="button" class="p-button-sm" (click)="showDialog(true)" label="Book Now"></button>
 
-<p-toast position="top-right" key="tl" [style]="{width: '30vw'}"></p-toast>
+<p-toast position="top-right" key="tl" [style]="{width: '50vw'}"></p-toast>
 <p-dialog [modal]="true" header="Book Appointment" [(visible)]="display" [transitionOptions]="'100ms'"
     [breakpoints]="{'1160px': '78vw','960px': '90vw', '500px': '91vw'}" [style]="{width: '70vw'}">
     <form [formGroup]="addNewAppointmentForm" class="grid">
